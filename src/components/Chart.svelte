@@ -1,7 +1,7 @@
 <script>
     import Line from "svelte-chartjs/src/Line.svelte"
-    import {getExchangeData} from '../services/ApiService.svelte';
-    import {onMount} from 'svelte';
+    import { getExchangeData } from '../services/ApiService.svelte';
+    import { onMount } from 'svelte';
 
     let dataPerWeek = {
         loaded: false,
@@ -13,7 +13,6 @@
 
     onMount(async () => {
         getExchangeData().then(resp => {
-            console.log(resp);
             dataPerWeek.loaded = true;
             dataPerWeek.data = resp.reverse();
 
