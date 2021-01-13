@@ -6,10 +6,15 @@
         let now = new Date();
 
         for (let i = 0; i < 30; i++) {
-            let period = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
+            let period = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i),
+                year = period.getFullYear(),
+                month = period.getMonth() + 1,
+                day = period.getDate();
+
+            month = month < 10 ? '0' + month : month;
 
             // it takes format yyyymmdd, example 20201118
-            const apiUrl = `https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=${period.getFullYear()}${period.getMonth()+1}${period.getDate()}&json`;
+            const apiUrl = `https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=${year}${month}${day}&json`;
 
             const response = await fetch(`${apiUrl}`, {
                 method: 'GET',
